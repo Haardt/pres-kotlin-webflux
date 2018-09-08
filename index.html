@@ -296,7 +296,7 @@
             <h1>Thank you</h1>
         </section>
         <section>
-            <p style="text-align: left; margin-left: 44px;">Spring Kotlin-DSL</p>
+            <p style="text-align: left; margin-left: 44px;">Bean-DSL</p>
             <pre data-badge="kotlin" data-badge-fg="lightgrey">
               <code class="language-kotlin">
 <!--
@@ -352,7 +352,7 @@ val context = ReactiveWebServerApplicationContext().apply {
 <!--
    repository.getAttendeeById(jsonRequest.obj(Keys.attendee).string(Keys.id))
             .zipWhen { attendee ->
-                tracer.currentSpan().annotate("find attendee mapping data")
+                tracer.currentSpan().annotate("find profile")
                 profileRepository.getProfileById(attendee.profileId)
             }
             .flatMap { (attendee, profile) -> {
@@ -360,34 +360,59 @@ val context = ReactiveWebServerApplicationContext().apply {
 -->
               </code>
             </pre>
-
         </section>
         <section>
-            <h3>klaxon</h3>
+            <h3>it's a trap!?</h3>
         </section>
         <section>
-            <h3>dsl</h3>
-        </section>
-        <section>
-            <h3>spek2</h3>
-        </section>
-        <section>
-            <p style="text-align: left; margin-left: 44px;">Kotlix</p>
+            <p style="text-align: left; margin-left: 44px;">DSL</p>
             <pre data-badge="kotlin" data-badge-fg="lightgrey">
               <code class="language-kotlin">
-                import java.bla.Test
-                fun test () {
-                }
+<!--
+when {
+  transition(oldState, newState) from INIT or RESEND_CREATE_ATTENDEE to CREATE_ATTENDEE ->
+-->
               </code>
             </pre>
+        </section>
+        <section>
+            <p style="text-align: left; margin-left: 44px;">Klaxon</p>
             <pre data-badge="json" data-badge-fg="lightgrey">
                <code class="language-json">
                 {
-                    "test": "test
+                    "id": 123,
+                    "firstName": "Alice"
                 }
                </code>
             </pre>
+            <pre data-badge="kotlin" data-badge-fg="lightgrey">
+              <code class="language-kotlin">
+        json {
+          obj(
+            "id" to attendee.id,
+            "firstName" to attendee.firstName
+          )
+              </code>
+            </pre>
+        </section>
+        <section>
+            <p style="text-align: left; margin-left: 44px;">Spek2</p>
+            <pre data-badge="json" data-badge-fg="lightgrey">
+               <code class="language-json">
+object AttendeeStoreTest : Spek({
 
+  Feature("Synchronize a attendee") {
+    Scenario("An sync runs in a timeout") {
+      When("a timeout occurs") {
+        ...
+      }
+      Then("the state should set on 'RESEND_CREATE_ATTENDEE'") {
+        state.string(currentProcess) shouldEqual RESEND_CREATE_ATTENDEE
+      }
+    }
+
+               </code>
+            </pre>
         </section>
         <section id="end">
             <h1 class="ml9">
