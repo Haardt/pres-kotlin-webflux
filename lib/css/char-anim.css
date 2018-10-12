@@ -255,6 +255,10 @@ h1.ml8 {
     position:absolute;
 }
 
+
+.black {
+    color: black;
+}
 /*body {*/
 /*width: 100wh;*/
 /*height: 90vh;*/
@@ -322,7 +326,7 @@ div.backgrounds {
     background-image: url("/images/support-logo.png");
     /*background-color: silver;*/
     background-repeat: no-repeat;
-    background-position: right 245px top 1.75em;
+    background-position: right 2% top 1%;
     background-clip: content-box;
     /*height: 20em;*/
     /*padding: 2em;*/

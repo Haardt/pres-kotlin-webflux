@@ -120,7 +120,8 @@
             </section>
 
             <section>
-                <p style="text-align: left; margin-left: 44px; text-shadow: 2px 2px #002b36">Data Classes / MongoDB</p>
+                <p style="text-align: left; margin-left: 44px; text-shadow: 2px 2px #002b36">Data Classes /
+                    MongoDB</p>
                 <pre data-badge="kotlin" data-badge-fg="lightgrey">
                   <code class="language-kotlin">
         @Document
@@ -202,25 +203,54 @@
 
         <section>
             <section data-autoslide="0">
-                <h2  >Spring WebFlux</h2>
+                <h2>Spring WebFlux</h2>
                 <p class="fragment fade-in" data-autoslide="1000">'reactive-stream' Implementation</p>
                 <p class="fragment fade-in"></p>
             </section>
             <section>
-                <h2>Concept</h2>
+                <img src="/images/spring-reactor.png">
+            </section>
+            <section tagcloud>
+                <span>'The Twelve-Factor App'</span>
+                <span>'The Reactive Manifesto'</span>
+                <span>'Don't block the event-loop'</span>
+                <span>'Functional stream processing'</span>
+                <span>'back-pressure'</span>
             </section>
             <section>
                 <h2>Benefits</h2>
+                <table>
+                    <tr>
+                        <td>performing</td>
+                        <td>no locking, effective threading-model</td>
+                    </tr>
+                    <tr>
+                        <td>stable</td>
+                        <td>back-pressure</td>
+                    </tr>
+                    <tr>
+                        <td>responsive</td>
+                        <td>less memory consumption, stable response time</td>
+                    </tr>
+                </table>
+            </section>
+            <section id="green" class="green" data-background-color="#00FF00">
+                <span>and</span>
+                <h1>less server</h1>
             </section>
             <section>
-                <small>SpringBoot 2 Servlet vs Reactive performance — 2500 users (4 requests/user)</small>
-                <img src="/images/web-vs-flux-2500.png">
-                <small>https://medium.com/@the.raj.saxena/springboot-2-performance-servlet-stack-vs-webflux-reactive-stack-528ad5e9dadc</small>
-            </section>
-           <section>
-                <small>SpringBoot 2 Servlet vs Reactive performance — 5000 users (4 requests/user)</small>
+                <small>SpringBoot 2 Servlet vs Reactive performance — 5000 users (4 req/user)</small>
                 <img src="/images/web-vs-flux.png">
-                <small>https://medium.com/@the.raj.saxena/springboot-2-performance-servlet-stack-vs-webflux-reactive-stack-528ad5e9dadc</small>
+                <small>
+                    https://medium.com/@the.raj.saxena/springboot-2-performance-servlet-stack-vs-webflux-reactive-stack-528ad5e9dadc
+                </small>
+            </section>
+            <section>
+                <small>SpringBoot 2 Servlet vs Reactive performance — 2500 users (4 req/user)</small>
+                <img src="/images/web-vs-flux-2500.png">
+                <small>
+                    https://medium.com/@the.raj.saxena/springboot-2-performance-servlet-stack-vs-webflux-reactive-stack-528ad5e9dadc
+                </small>
             </section>
 
         </section>
@@ -262,7 +292,19 @@
             <h1>Sorry - all good</h1>
         </section>
         <section>
+            <h3>bean dsl</h3>
+        </section>
+        <section>
+            <h3>routing dsl</h3>
+        </section>
+        <section>
             <h3>zip und tuples</h3>
+        </section>
+        <section>
+            <h3>klaxon</h3>
+        </section>
+        <section>
+            <h3>dsl</h3>
         </section>
         <section>
             <h3>spek2</h3>
@@ -327,7 +369,7 @@
                               {src: 'plugin/chart/Chart.min.js'},
                               {src: 'plugin/chart/csv2chart.js'},
                               {src: 'plugin/badges/badges.js'},
-                              {src: 'plugin/tagcloud/tagcloud.js', async: true },
+                              {src: 'plugin/tagcloud/tagcloud.js', async: true},
                               {src: 'plugin/notes/notes.js', async: true},
                               {
                                   src: 'plugin/highlight/highlight.js', async: true, callback: function () {
@@ -449,7 +491,7 @@
                 break;
             }
             case 'end': {
-                $('.ml9 .letters').each(function(){
+                $('.ml9 .letters').each(function () {
                     $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
                 });
 
@@ -459,15 +501,15 @@
                              scale: [0, 1],
                              duration: 1500,
                              elasticity: 600,
-                             delay: function(el, i) {
-                                 return 45 * (i+1)
+                             delay: function (el, i) {
+                                 return 45 * (i + 1)
                              }
                          })
 
                 anime.timeline({loop: true})
                     .add({
                              targets: '.ml5 .line',
-                             opacity: [0.5,1],
+                             opacity: [0.5, 1],
                              scaleX: [0, 1],
                              easing: "easeInOutExpo",
                              duration: 700
@@ -475,27 +517,27 @@
                                     targets: '.ml5 .line',
                                     duration: 600,
                                     easing: "easeOutExpo",
-                                    translateY: function(e, i, l) {
-                                        var offset = -0.625 + 0.625*2*i;
+                                    translateY: function (e, i, l) {
+                                        var offset = -0.625 + 0.625 * 2 * i;
                                         return offset + "em";
                                     }
                                 }).add({
                                            targets: '.ml5 .ampersand',
-                                           opacity: [0,1],
+                                           opacity: [0, 1],
                                            scaleY: [0.5, 1],
                                            easing: "easeOutExpo",
                                            duration: 600,
                                            offset: '-=600'
                                        }).add({
                                                   targets: '.ml5 .letters-left',
-                                                  opacity: [0,1],
+                                                  opacity: [0, 1],
                                                   translateX: ["0.5em", 0],
                                                   easing: "easeOutExpo",
                                                   duration: 600,
                                                   offset: '-=300'
                                               }).add({
                                                          targets: '.ml5 .letters-right',
-                                                         opacity: [0,1],
+                                                         opacity: [0, 1],
                                                          translateX: ["-0.5em", 0],
                                                          easing: "easeOutExpo",
                                                          duration: 600,
@@ -507,6 +549,17 @@
                                                                 easing: "easeOutExpo",
                                                                 delay: 1000
                                                             });
+                break;
+            }
+            case 'green': {
+                anime.timeline({loop: true})
+                    .add({
+                             targets: '.slide-background .green .present',
+                             opacity: 0,
+                             backgroundColor: '#FF0',
+                             easing: "easeInOutExpo",
+                             duration: 1500
+                         });
                 break;
             }
             default: {
