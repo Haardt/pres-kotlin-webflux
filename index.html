@@ -1,0 +1,571 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+
+    <link rel="stylesheet" href="css/theme/league.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="lib/css/char-anim.css">
+
+    <link rel="stylesheet" href="plugin/title-footer/title-footer.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+
+        <section id="start" data-state="no-title-footer">
+            <h1 class="ml8">
+                <span class="letters-container">
+                <span class="letters letters-left">Welcome</span>
+                <span class="letters bang">!</span>
+                </span>
+                <span class="circle circle-white"></span>
+                <span class="circle circle-dark"></span>
+                <span class="circle circle-container"><span class="circle circle-dark-dashed">
+                </span></span>
+            </h1>
+            <h3>to the Kotlin-Meetup in Karlsruhe</h3>
+        </section>
+        <section data-state="no-title-footer">
+            <p>
+                <small>
+                    <strong>Andreas Haardt</strong><br>
+                    Senior Software Engineer<br>
+                    <table>
+                        <tr>
+                            <td><img style="width: 64px; vertical-align: middle;"
+                                     src="/images/twitter_hex_icon.png"/></td>
+                            <td style="vertical-align: middle;">
+                                <small style="padding-top: 16px;">massenhaft@twitter</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img style="width: 64px; vertical-align: middle;" src="/images/people.png"/></td>
+                            <td style="vertical-align: middle;">
+                                <small style="padding-top: 16px;">STARFACE GmbH</small>
+                            </td>
+                        </tr>
+                    </table>
+                </small>
+            </p>
+        </section>
+        <section id="title" data-state="no-title-footer">
+            <h3 class="ml1">
+              <span class="text-wrapper">
+                <span class="line line1"></span>
+                <span class="letters">
+                    <div>Spring Webflux with Kotlin</div>
+                </span>
+                <span class="line line2"></span>
+              </span>
+            </h3>
+        </section>
+        <section>
+            <section>
+                <p>Why Kotlin?</p>
+                <p data-autoslide="800" class="fragment fade-in">Why Spring Flux?</p>
+                <p class="fragment fade-in">
+                    for the backend...
+                </p>
+                </span>
+            </section>
+
+            <section data-autoslide="0" id="newProject" data-background-image="/images/wiese1.jpg">
+                <h2 style="text-shadow: 2px 2px #002b36;" class="ml11">
+                  <span class="text-wrapper">
+                    <span class="line line1"></span>
+                    <span class="letters">new product</span>
+                  </span>
+                </h2>
+                <p data-autoslide="1500" class="fragment fade-in">started at late 2017</p>
+                <p class="fragment fade-in"></p>
+            </section>
+
+            <section>
+                <h2>Tech Stack</h2>
+                <p>
+                    <small>Technological Capabilities</small>
+                </p>
+                <p>
+                    <small>Maintainability</small>
+                </p>
+                <p>
+                    <small>Business Requirements</small>
+                </p>
+                <div class="tech-circle tech-circle-green">
+                    <div class="tech-circle tech-circle-red"></div>
+                    <div class="tech-circle tech-circle-blue"></div>
+                </div>
+            </section>
+
+            <section>
+                <p>Ecosystem: Java</p>
+                <h2>Language?</h2>
+            </section>
+
+            <section>
+                <p style="text-align: left; margin-left: 44px; text-shadow: 2px 2px #002b36">Data Classes / MongoDB</p>
+                <pre data-badge="kotlin" data-badge-fg="lightgrey">
+                  <code class="language-kotlin">
+        @Document
+        data class Attendee(
+          @Id var id: String?,
+          var appliance: AttendeeAppliance?,
+          @field:NotBlank var firstName: String,
+          @field:NotBlank var lastName: String,
+          @field:Email var email: String,
+          @Indexed @field:NotBlank var customerId: String
+        )
+                  </code>
+                </pre>
+            </section>
+
+            <section>
+                <p style="text-align: left; margin-left: 44px; text-shadow: 2px 2px #002b36">Helper</p>
+                <pre data-badge="kotlin" data-badge-fg="lightgrey">
+                  <code class="language-kotlin">
+<!--
+        // Infix
+        return "a" to "b"
+
+        // Sealed Classes
+        sealed class AttendeeActions() : Action
+        when(attendeeAction) {
+            is CreateAttendeeAction -> ...
+
+        // Extension Functions
+        operator fun <A, B> Tuple2<A, B>.component1() = this.t1
+        operator fun <A, B> Tuple2<A, B>.component2() = this.t2
+-->
+                  </code>
+                </pre>
+            </section>
+
+            <section>
+                <canvas data-chart="line">
+                    <!--
+                    {
+                     "data": {
+                      "labels": ["2016-01-03","2016-01-10","2016-01-17","2016-01-24","2016-01-31","2016-02-07","2016-02-14","2016-02-21","2016-02-28","2016-03-06","2016-03-13","2016-03-20","2016-03-27","2016-04-03","2016-04-10","2016-04-17","2016-04-24","2016-05-01","2016-05-08","2016-05-15","2016-05-22","2016-05-29","2016-06-05","2016-06-12","2016-06-19","2016-06-26","2016-07-03","2016-07-10","2016-07-17","2016-07-24","2016-07-31","2016-08-07","2016-08-14","2016-08-21","2016-08-28","2016-09-04","2016-09-11","2016-09-18","2016-09-25","2016-10-02","2016-10-09","2016-10-16","2016-10-23","2016-10-30","2016-11-06","2016-11-13","2016-11-20","2016-11-27","2016-12-04","2016-12-11","2016-12-18","2016-12-25","2017-01-01","2017-01-08","2017-01-15","2017-01-22","2017-01-29","2017-02-05","2017-02-12","2017-02-19","2017-02-26","2017-03-05","2017-03-12","2017-03-19","2017-03-26","2017-04-02","2017-04-09","2017-04-16","2017-04-23","2017-04-30","2017-05-07","2017-05-14","2017-05-21","2017-05-28","2017-06-04","2017-06-11","2017-06-18","2017-06-25","2017-07-02","2017-07-09","2017-07-16","2017-07-23","2017-07-30","2017-08-06","2017-08-13","2017-08-20","2017-08-27","2017-09-03","2017-09-10","2017-09-17","2017-09-24","2017-10-01","2017-10-08","2017-10-15","2017-10-22","2017-10-29","2017-11-05","2017-11-12","2017-11-19","2017-11-26","2017-12-03","2017-12-10","2017-12-17","2017-12-24","2017-12-31","2018-01-07","2018-01-14","2018-01-21","2018-01-28","2018-02-04","2018-02-11","2018-02-18","2018-02-25","2018-03-04","2018-03-11","2018-03-18","2018-03-25","2018-04-01","2018-04-08","2018-04-15","2018-04-22","2018-04-29","2018-05-06","2018-05-13","2018-05-20","2018-05-27","2018-06-03","2018-06-10","2018-06-17","2018-06-24","2018-07-01","2018-07-08","2018-07-15","2018-07-22","2018-07-29","2018-08-05","2018-08-12","2018-08-19","2018-08-26","2018-09-02","2018-09-09","2018-09-16","2018-09-23","2018-09-30","2018-10-07"],
+                      "datasets": [
+                       {
+                        "data":[3,4,4,4,4,4,12,8,6,6,7,6,5,8,6,6,6,5,5,6,5,6,8,6,6,6,5,6,5,6,5,6,5,6,6,6,7,7,6,6,7,7,7,8,8,8,9,8,8,8,7,7,9,8,9,10,9,10,10,10,12,11,13,12,10,14,12,11,12,12,12,100,71,43,37,36,33,31,31,30,34,28,29,31,30,30,31,31,31,32,32,31,35,38,35,41,44,41,39,40,41,39,37,32,35,39,40,40,43,41,43,41,43,42,46,45,47,44,45,45,44,40,47,48,48,46,50,46,48,46,47,50,50,48,52,49,47,52,52,49,50,51,49,52,53],
+                        "label":"Kotlin Google search requests","backgroundColor":"rgba(20,220,220,.8)"
+                       }
+                      ]
+                     },
+                     "options": { "responsive": "true" }
+                    }
+                    -->
+                </canvas>
+            </section>
+            <section>
+                <canvas data-chart="line">
+                    <!--
+                    {
+                     "data": {
+                      "labels": ["2016-01-03","2016-01-10","2016-01-17","2016-01-24","2016-01-31","2016-02-07","2016-02-14","2016-02-21","2016-02-28","2016-03-06","2016-03-13","2016-03-20","2016-03-27","2016-04-03","2016-04-10","2016-04-17","2016-04-24","2016-05-01","2016-05-08","2016-05-15","2016-05-22","2016-05-29","2016-06-05","2016-06-12","2016-06-19","2016-06-26","2016-07-03","2016-07-10","2016-07-17","2016-07-24","2016-07-31","2016-08-07","2016-08-14","2016-08-21","2016-08-28","2016-09-04","2016-09-11","2016-09-18","2016-09-25","2016-10-02","2016-10-09","2016-10-16","2016-10-23","2016-10-30","2016-11-06","2016-11-13","2016-11-20","2016-11-27","2016-12-04","2016-12-11","2016-12-18","2016-12-25","2017-01-01","2017-01-08","2017-01-15","2017-01-22","2017-01-29","2017-02-05","2017-02-12","2017-02-19","2017-02-26","2017-03-05","2017-03-12","2017-03-19","2017-03-26","2017-04-02","2017-04-09","2017-04-16","2017-04-23","2017-04-30","2017-05-07","2017-05-14","2017-05-21","2017-05-28","2017-06-04","2017-06-11","2017-06-18","2017-06-25","2017-07-02","2017-07-09","2017-07-16","2017-07-23","2017-07-30","2017-08-06","2017-08-13","2017-08-20","2017-08-27","2017-09-03","2017-09-10","2017-09-17","2017-09-24","2017-10-01","2017-10-08","2017-10-15","2017-10-22","2017-10-29","2017-11-05","2017-11-12","2017-11-19","2017-11-26","2017-12-03","2017-12-10","2017-12-17","2017-12-24","2017-12-31","2018-01-07","2018-01-14","2018-01-21","2018-01-28","2018-02-04","2018-02-11","2018-02-18","2018-02-25","2018-03-04","2018-03-11","2018-03-18","2018-03-25","2018-04-01","2018-04-08","2018-04-15","2018-04-22","2018-04-29","2018-05-06","2018-05-13","2018-05-20","2018-05-27","2018-06-03","2018-06-10","2018-06-17","2018-06-24","2018-07-01","2018-07-08","2018-07-15","2018-07-22","2018-07-29","2018-08-05","2018-08-12","2018-08-19","2018-08-26","2018-09-02","2018-09-09","2018-09-16","2018-09-23","2018-09-30","2018-10-07"],
+                      "datasets": [
+
+                       {
+                        "data":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,3,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,2,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+                        "label":"Kotlin","backgroundColor":"rgba(220,120,120,.8)"
+                       },
+                       {
+                        "data":[86,91,96,97,98,100,98,98,98,99,99,92,96,96,98,98,99,91,95,93,93,91,91,90,92,87,84,84,88,88,87,82,79,84,85,84,87,93,91,87,88,93,91,86,88,92,87,89,87,83,79,66,74,80,84,84,86,88,87,92,91,90,90,92,90,91,85,87,88,80,84,81,80,78,77,79,79,73,75,78,78,78,76,73,70,72,74,76,81,84,81,78,81,80,81,79,84,82,77,80,81,78,71,56,60,71,76,76,80,76,73,77,75,75,76,75,73,74,74,78,76,68,72,73,70,69,71,67,66,66,64,67,69,69,68,67,64,67,68,70,71,74,72,70,72],
+                        "label":"Java","backgroundColor":"rgba(20,220,220,.8)"
+                       }
+                      ]
+                     },
+                     "options": { "responsive": "true" }
+                    }
+                    -->
+                </canvas>
+            </section>
+        </section>
+
+        <section>
+            <section data-autoslide="0">
+                <h2  >Spring WebFlux</h2>
+                <p class="fragment fade-in" data-autoslide="1000">'reactive-stream' Implementation</p>
+                <p class="fragment fade-in"></p>
+            </section>
+            <section>
+                <h2>Concept</h2>
+            </section>
+            <section>
+                <h2>Benefits</h2>
+            </section>
+            <section>
+                <small>SpringBoot 2 Servlet vs Reactive performance — 2500 users (4 requests/user)</small>
+                <img src="/images/web-vs-flux-2500.png">
+                <small>https://medium.com/@the.raj.saxena/springboot-2-performance-servlet-stack-vs-webflux-reactive-stack-528ad5e9dadc</small>
+            </section>
+           <section>
+                <small>SpringBoot 2 Servlet vs Reactive performance — 5000 users (4 requests/user)</small>
+                <img src="/images/web-vs-flux.png">
+                <small>https://medium.com/@the.raj.saxena/springboot-2-performance-servlet-stack-vs-webflux-reactive-stack-528ad5e9dadc</small>
+            </section>
+
+        </section>
+
+        <section tagcloud data-transition="zoom">
+            <span tagcloud-weight="30">Gradle</span>
+            <span tagcloud-weight="50">Kotlin</span>
+            <span tagcloud-weight="25">TypeScript</span>
+            <span tagcloud-weight="20">Webpack</span>
+            <br>
+            <span tagcloud-weight="15">Groovy</span>
+            <span tagcloud-weight="10">Spock</span>
+            <span tagcloud-weight="30">Spek2</span>
+            <span tagcloud-weight="25">Geb</span>
+            <br>
+            <span tagcloud-weight="40">VueJS</span>
+            <span tagcloud-weight="40">VueX</span>
+            <span tagcloud-weight="20">SemanticUI</span>
+            <span tagcloud-weight="50">Spring</span>
+            <br>
+
+            <span tagcloud-weight="50">Vert.x</span>
+            <span tagcloud-weight="20">Docker</span>
+            <span tagcloud-weight="40">Kubernetes</span>
+            <span tagcloud-weight="20">Rancher</span>
+            <br>
+            <span tagcloud-weight="40">helm</span>
+            <span tagcloud-weight="30">Gitlab</span>
+            <span tagcloud-weight="10">npm</span>
+            <span tagcloud-weight="20">Nexus</span>
+            <span tagcloud-weight="10">Idea</span>
+            <span tagcloud-weight="20">Jest</span>
+        </section>
+
+        <section>
+            <h1>WTF => Kotlin with Spring WebFlux</h1>
+        </section>
+        <section>
+            <h1>Sorry - all good</h1>
+        </section>
+        <section>
+            <h3>zip und tuples</h3>
+        </section>
+        <section>
+            <h3>spek2</h3>
+        </section>
+        <section>
+            <p style="text-align: left; margin-left: 44px;">Kotlix</p>
+            <pre data-badge="kotlin" data-badge-fg="lightgrey">
+              <code class="language-kotlin">
+                import java.bla.Test
+                fun test () {
+                }
+              </code>
+            </pre>
+            <pre data-badge="json" data-badge-fg="lightgrey">
+               <code class="language-json">
+                {
+                    "test": "test
+                }
+               </code>
+            </pre>
+
+        </section>
+        <section id="end">
+            <h1 class="ml9">
+            <span class="text-wrapper">
+                <span class="letters">Thank you</span>
+            </span>
+            </h1>
+            <h3 class="ml9">
+            <span class="text-wrapper">
+                <span class="letters">Andreas Haardt</span>
+            </span>
+            </h3>
+            <h3 class="ml5">
+              <span class="text-wrapper">
+                <span class="line line1"></span>
+                <span class="letters letters-left">massenhaft</span>
+                <span class="letters ampersand">@</span>
+                <span class="letters letters-right">twitter</span>
+                <span class="line line2"></span>
+              </span>
+            </h3>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    let currentAnimInstance = null;
+
+    Reveal.initialize({
+                          dependencies: [
+                              {src: 'node_modules/jquery/dist/jquery.js'},
+                              {src: 'plugin/markdown/marked.js'},
+                              {src: 'plugin/markdown/markdown.js'},
+                              {src: 'plugin/chart/Chart.min.js'},
+                              {src: 'plugin/chart/csv2chart.js'},
+                              {src: 'plugin/badges/badges.js'},
+                              {src: 'plugin/tagcloud/tagcloud.js', async: true },
+                              {src: 'plugin/notes/notes.js', async: true},
+                              {
+                                  src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                                      hljs.initHighlightingOnLoad();
+                                  }
+                              },
+                              {
+                                  src: 'plugin/title-footer/title-footer.js', async: true, callback: function () {
+                                      title_footer.initialize("Spring-Webflux with Kotlin");
+                                  }
+                              },
+                              {
+                                  src: 'node_modules/animejs/anime.js', callback: function () {
+                                  }
+                              }
+                          ],
+                          chart: {
+                              defaults: {
+                                  global: {
+                                      title: {fontColor: "#FFF"},
+                                      legend: {
+                                          labels: {fontColor: "#FFF"},
+                                      },
+                                  },
+                                  scale: {
+                                      scaleLabel: {fontColor: "#FFF"},
+                                      gridLines: {color: "#FFF", zeroLineColor: "#FFF"},
+                                      ticks: {fontColor: "#FFF"},
+                                  }
+                              },
+                              line: {
+                                  borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)",
+                                                "rgba(20,120,220,.8)"], "borderDash": [[5, 10], [0, 0]]
+                              },
+                              bar: {
+                                  backgroundColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)",
+                                                    "rgba(20,120,220,.8)"]
+                              },
+                              pie: {
+                                  backgroundColor: [["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)",
+                                                     "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]]
+                              },
+                              radar: {
+                                  borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)",
+                                                "rgba(20,120,220,.8)"]
+                              },
+                          },
+                          badges: {
+                              path: 'plugin/badges',
+                              defaults: {
+                                  bg: 'black',
+                                  fg: 'white',
+                                  position: 'tr'
+                              },
+                              languages: true
+                          }
+                      });
+    Reveal.addEventListener('slidechanged', function (event) {
+        console.log("***", event.currentSlide.id)
+        switch (event.currentSlide.id) {
+            case "title": {
+                $('.ml1 .letters').each(function () {
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g,
+                                                        "<span class='letter'>$&</span>"));
+                });
+                currentAnimInstance = anime.timeline({loop: false})
+                    .add({
+                             targets: '.ml1 .letter',
+                             scale: [0.3, 1],
+                             opacity: [0, 1],
+                             translateZ: 0,
+                             easing: "easeOutExpo",
+                             duration: 600,
+                             delay: function (el, i) {
+                                 return 70 * (i + 1)
+                             }
+                         }).add({
+                                    targets: '.ml1 .line',
+                                    scaleX: [0, 1],
+                                    opacity: [0.5, 1],
+                                    easing: "easeOutExpo",
+                                    duration: 700,
+                                    offset: '-=875',
+                                    delay: function (el, i, l) {
+                                        return 80 * (l - i);
+                                    }
+                                })
+                break;
+            }
+            case 'newProject': {
+                $('.ml11 .letters').each(function () {
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+                });
+
+                currentAnimInstance = anime.timeline({loop: false})
+                    .add({
+                             targets: '.ml11 .line',
+                             scaleY: [0, 1],
+                             opacity: [0.5, 1],
+                             easing: "easeOutExpo",
+                             duration: 700
+                         })
+                    .add({
+                             targets: '.ml11 .line',
+                             translateX: [0, $(".ml11 .letters").width()],
+                             easing: "easeOutExpo",
+                             duration: 700,
+                             delay: 100
+                         }).add({
+                                    targets: '.ml11 .letter',
+                                    opacity: [0, 1],
+                                    easing: "easeOutExpo",
+                                    duration: 600,
+                                    offset: '-=775',
+                                    delay: function (el, i) {
+                                        return 34 * (i + 1)
+                                    }
+                                })
+                break;
+            }
+            case 'end': {
+                $('.ml9 .letters').each(function(){
+                    $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+                });
+
+                currentAnimInstance = anime.timeline({loop: false})
+                    .add({
+                             targets: '.ml9 .letter',
+                             scale: [0, 1],
+                             duration: 1500,
+                             elasticity: 600,
+                             delay: function(el, i) {
+                                 return 45 * (i+1)
+                             }
+                         })
+
+                anime.timeline({loop: true})
+                    .add({
+                             targets: '.ml5 .line',
+                             opacity: [0.5,1],
+                             scaleX: [0, 1],
+                             easing: "easeInOutExpo",
+                             duration: 700
+                         }).add({
+                                    targets: '.ml5 .line',
+                                    duration: 600,
+                                    easing: "easeOutExpo",
+                                    translateY: function(e, i, l) {
+                                        var offset = -0.625 + 0.625*2*i;
+                                        return offset + "em";
+                                    }
+                                }).add({
+                                           targets: '.ml5 .ampersand',
+                                           opacity: [0,1],
+                                           scaleY: [0.5, 1],
+                                           easing: "easeOutExpo",
+                                           duration: 600,
+                                           offset: '-=600'
+                                       }).add({
+                                                  targets: '.ml5 .letters-left',
+                                                  opacity: [0,1],
+                                                  translateX: ["0.5em", 0],
+                                                  easing: "easeOutExpo",
+                                                  duration: 600,
+                                                  offset: '-=300'
+                                              }).add({
+                                                         targets: '.ml5 .letters-right',
+                                                         opacity: [0,1],
+                                                         translateX: ["-0.5em", 0],
+                                                         easing: "easeOutExpo",
+                                                         duration: 600,
+                                                         offset: '-=600'
+                                                     }).add({
+                                                                targets: '.ml5',
+                                                                opacity: 0,
+                                                                duration: 1000,
+                                                                easing: "easeOutExpo",
+                                                                delay: 1000
+                                                            });
+                break;
+            }
+            default: {
+                setTimeout(() => {currentAnimInstance.reset()}, 1500)
+            }
+        }
+
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+    });
+    Reveal.addEventListener('ready', function (event) {
+        console.log("***", event.currentSlide)
+        anime.timeline({loop: true})
+            .add({
+                     targets: '.ml8 .circle-white',
+                     scale: [0, 3],
+                     opacity: [1, 0],
+                     easing: "easeInOutExpo",
+                     rotateZ: 360,
+                     duration: 1100
+                 }).add({
+                            targets: '.ml8 .circle-container',
+                            scale: [0, 1],
+                            duration: 1100,
+                            easing: "easeInOutExpo",
+                            offset: '-=1000'
+                        }).add({
+                                   targets: '.ml8 .circle-dark',
+                                   scale: [0, 1],
+                                   duration: 1100,
+                                   easing: "easeOutExpo",
+                                   offset: '-=600'
+                               }).add({
+                                          targets: '.ml8 .letters-left',
+                                          scale: [0, 1],
+                                          duration: 1200,
+                                          offset: '-=550'
+                                      }).add({
+                                                 targets: '.ml8 .bang',
+                                                 scale: [0, 1],
+                                                 rotateZ: [45, 15],
+                                                 duration: 1200,
+                                                 offset: '-=1000'
+                                             }).add({
+                                                        targets: '.ml8',
+                                                        opacity: 0,
+                                                        duration: 1000,
+                                                        easing: "easeOutExpo",
+                                                        delay: 1400
+                                                    });
+
+        anime({
+                  targets: '.ml8 .circle-dark-dashed',
+                  rotateZ: 360,
+                  duration: 8000,
+                  easing: "linear",
+                  loop: true
+              });
+        // event.currentSlide, event.indexh, event.indexv
+    });
+</script>
+</body>
+</html>
