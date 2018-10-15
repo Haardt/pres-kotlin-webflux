@@ -286,19 +286,81 @@
         </section>
 
         <section>
-            <h1>WTF => Kotlin with Spring WebFlux</h1>
+            <h1>Ok...Now WebFlux with Kotlin :-)</h1>
         </section>
         <section>
-            <h1>Sorry - all good</h1>
+            <h1>Problems</h1>
         </section>
         <section>
-            <h3>bean dsl</h3>
+            <h1>Nothing</h1>
+            <h1>Thank you</h1>
         </section>
         <section>
-            <h3>routing dsl</h3>
+            <p style="text-align: left; margin-left: 44px;">Spring Kotlin-DSL</p>
+            <pre data-badge="kotlin" data-badge-fg="lightgrey">
+              <code class="language-kotlin">
+<!--
+val context = ReactiveWebServerApplicationContext().apply {
+    beans {
+        bean<LogbackLoggingSystem>()
+        bean<ReactiveWebServerFactory>(name = "ReactiveWebServerFactory") {
+            NettyReactiveWebServerFactory(8080)
+        }
+        bean {
+            ResourcePropertySource(EncodedResource(
+                  ClassPathResource("application.yml")))
+        }
+        bean<KafkaService<String, String>>()
+-->
+              </code>
+            </pre>
         </section>
         <section>
-            <h3>zip und tuples</h3>
+            <p style="text-align: left; margin-left: 44px;">Routing DSL</p>
+            <pre data-badge="kotlin" data-badge-fg="lightgrey">
+              <code class="language-kotlin">
+<!--
+                bean(name = "serviceRoutings") {
+                    val unsecuredRoutes = router {
+                        GET("/", ::livenessProbeResponse)
+                    }
+                    val securedRoutes = router {
+                        val tracer = ref<Tracer>()
+                        ("/api" and accept(MediaType.TEXT_PLAIN)).nest {
+                            GET("/test") {
+                                ServerResponse.ok().body("Hello".toFlux())
+-->
+              </code>
+            </pre>
+        </section>
+        <section>
+            <p style="text-align: left; margin-left: 44px;">Filter and merge</p>
+            <pre data-badge="kotlin" data-badge-fg="lightgrey">
+              <code class="language-kotlin">
+<!--
+                  }.filter { request, next ->
+                  ...
+                  ^return unsecuredRoutes.and(securedRoutes)
+-->
+              </code>
+            </pre>
+        </section>
+        <section>
+            <p style="text-align: left; margin-left: 44px;">Services</p>
+            <pre data-badge="kotlin" data-badge-fg="lightgrey">
+              <code class="language-kotlin">
+<!--
+   repository.getAttendeeById(jsonRequest.obj(Keys.attendee).string(Keys.id))
+            .zipWhen { attendee ->
+                tracer.currentSpan().annotate("find attendee mapping data")
+                profileRepository.getProfileById(attendee.profileId)
+            }
+            .flatMap { (attendee, profile) -> {
+            ...
+-->
+              </code>
+            </pre>
+
         </section>
         <section>
             <h3>klaxon</h3>
