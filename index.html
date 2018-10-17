@@ -207,15 +207,15 @@
                 <p class="fragment fade-in" data-autoslide="1000">'reactive-stream' Implementation</p>
                 <p class="fragment fade-in"></p>
             </section>
-            <section>
-                <img src="/images/spring-reactor.png">
-            </section>
             <section tagcloud>
                 <span>'The Twelve-Factor App'</span>
                 <span>'The Reactive Manifesto'</span>
                 <span>'Don't block the event-loop'</span>
                 <span>'Functional stream processing'</span>
                 <span>'back-pressure'</span>
+            </section>
+            <section>
+                <img src="/images/spring-reactor.png">
             </section>
             <section>
                 <h2>Benefits</h2>
@@ -400,17 +400,16 @@ when {
             <pre data-badge="json" data-badge-fg="lightgrey">
                <code class="language-json">
 object AttendeeStoreTest : Spek({
-
   Feature("Synchronize a attendee") {
     Scenario("An sync runs in a timeout") {
       When("a timeout occurs") {
         ...
       }
       Then("the state should set on 'RESEND_CREATE_ATTENDEE'") {
-        state.string(currentProcess) shouldEqual RESEND_CREATE_ATTENDEE
+        state.string(PROCESS) shouldEqual RESEND_CREATE_ATTENDEE
       }
     }
-
+   ...
                </code>
             </pre>
         </section>
