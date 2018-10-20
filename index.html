@@ -208,14 +208,20 @@
                 <p class="fragment fade-in"></p>
             </section>
             <section tagcloud>
-                <span>'The Twelve-Factor App'</span>
-                <span>'The Reactive Manifesto'</span>
-                <span>'Don't block the event-loop'</span>
-                <span>'Functional stream processing'</span>
-                <span>'back-pressure'</span>
+                <span tagcloud-weight="35">'The Twelve-Factor App'</span>
+                <span tagcloud-weight="30">'The Reactive Manifesto'</span>
+                <span tagcloud-weight="15">'Don't block the event-loop'</span>
+                <span tagcloud-weight="20">'Functional stream processing'</span>
+                <span tagcloud-weight="25">'back-pressure'</span>
             </section>
             <section>
                 <img src="/images/spring-reactor.png">
+            </section>
+            <section>
+                <p>Thread Model</p>
+            </section>
+            <section>
+                <p>Flux/Mono</p>
             </section>
             <section>
                 <h2>Benefits</h2>
@@ -286,7 +292,7 @@
         </section>
 
         <section>
-            <h1>Ok...Now WebFlux with Kotlin :-)</h1>
+            <h1>... and now WebFlux with Kotlin :-)</h1>
         </section>
         <section>
             <h1>Problems</h1>
@@ -320,15 +326,15 @@ val context = ReactiveWebServerApplicationContext().apply {
             <pre data-badge="kotlin" data-badge-fg="lightgrey">
               <code class="language-kotlin">
 <!--
-                bean(name = "serviceRoutings") {
-                    val unsecuredRoutes = router {
-                        GET("/", ::livenessProbeResponse)
-                    }
-                    val securedRoutes = router {
-                        val tracer = ref<Tracer>()
-                        ("/api" and accept(MediaType.TEXT_PLAIN)).nest {
-                            GET("/test") {
-                                ServerResponse.ok().body("Hello".toFlux())
+        bean(name = "serviceRoutings") {
+            val unsecuredRoutes = router {
+                GET("/", ::livenessProbeResponse)
+            }
+            val securedRoutes = router {
+                val tracer = ref<Tracer>()
+                ("/api" and accept(MediaType.TEXT_PLAIN)).nest {
+                    GET("/test") {
+                        ServerResponse.ok().body("Hello".toFlux())
 -->
               </code>
             </pre>
@@ -344,6 +350,9 @@ val context = ReactiveWebServerApplicationContext().apply {
 -->
               </code>
             </pre>
+        </section>
+        <section>
+            <h3>it's a trap!?</h3>
         </section>
         <section>
             <p style="text-align: left; margin-left: 44px;">Services</p>
@@ -362,15 +371,12 @@ val context = ReactiveWebServerApplicationContext().apply {
             </pre>
         </section>
         <section>
-            <h3>it's a trap!?</h3>
-        </section>
-        <section>
             <p style="text-align: left; margin-left: 44px;">DSL</p>
             <pre data-badge="kotlin" data-badge-fg="lightgrey">
               <code class="language-kotlin">
 <!--
 when {
-  transition(oldState, newState) from INIT or RESEND_CREATE_ATTENDEE to CREATE_ATTENDEE ->
+ transition(oldState, newState) from INIT or RESEND_CREATE_ATTENDEE to CREATE_ATTENDEE ->
 -->
               </code>
             </pre>
@@ -379,11 +385,11 @@ when {
             <p style="text-align: left; margin-left: 44px;">Klaxon</p>
             <pre data-badge="json" data-badge-fg="lightgrey">
                <code class="language-json">
-                {
-                    "id": 123,
-                    "firstName": "Alice"
-                }
-               </code>
+        {
+            "id": 123,
+            "firstName": "Alice"
+        }
+              </code>
             </pre>
             <pre data-badge="kotlin" data-badge-fg="lightgrey">
               <code class="language-kotlin">
@@ -401,7 +407,7 @@ when {
                <code class="language-json">
 object AttendeeStoreTest : Spek({
   Feature("Synchronize a attendee") {
-    Scenario("An sync runs in a timeout") {
+    Scenario("An p runs in a timeout") {
       When("a timeout occurs") {
         ...
       }
