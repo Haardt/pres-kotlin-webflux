@@ -312,12 +312,13 @@
   (1..3).toFlux()
     .map { it * 2 }
     .collect(Supplier { Container(0) },
-      BiConsumer { collector: Container, b: Int -> collector.value += b })
+      BiConsumer { collector: Container, value: Int ->
+        collector.value += value })
     .zipWhen { result ->
       // Load from db
       "42 is ${result.value}".toMono()
     }.flatMap { (result, loaded) ->
-      """{ "value": ${result.value}, "loaded": $loaded""".toMono()
+      """{ "v": ${result.value}, "l": $loaded""".toMono()
     }
     .subscribe { println("Result: $it") }
 -->
@@ -349,15 +350,15 @@ val context = ReactiveWebServerApplicationContext().apply {
             <pre data-badge="kotlin" data-badge-fg="lightgrey">
               <code class="language-kotlin">
 <!--
-        bean(name = "serviceRoutings") {
-            val unsecuredRoutes = router {
-                GET("/", ::livenessProbeResponse)
-            }
-            val securedRoutes = router {
-                val tracer = ref<Tracer>()
-                ("/api" and accept(MediaType.TEXT_PLAIN)).nest {
-                    GET("/test") {
-                        ServerResponse.ok().body("Hello".toFlux())
+bean(name = "serviceRoutings") {
+    val unsecuredRoutes = router {
+        GET("/", ::livenessProbeResponse)
+    }
+    val securedRoutes = router {
+        val tracer = ref<Tracer>()
+        ("/api" and accept(MediaType.TEXT_PLAIN)).nest {
+            GET("/test") {
+                ServerResponse.ok().body("Hello".toFlux())
 -->
               </code>
             </pre>
@@ -367,9 +368,9 @@ val context = ReactiveWebServerApplicationContext().apply {
             <pre data-badge="kotlin" data-badge-fg="lightgrey">
               <code class="language-kotlin">
 <!--
-                  }.filter { request, next ->
-                  ...
-                  ^return unsecuredRoutes.and(securedRoutes)
+    }.filter { request, next ->
+    ...
+    ^return unsecuredRoutes.and(securedRoutes)
 -->
               </code>
             </pre>
@@ -378,17 +379,19 @@ val context = ReactiveWebServerApplicationContext().apply {
             <h3>it's a trap!?</h3>
         </section>
         <section>
+            <h3>nice to have:</h3>
+        </section>
+        <section>
             <p style="text-align: left; margin-left: 44px;">Services</p>
             <pre data-badge="kotlin" data-badge-fg="lightgrey">
               <code class="language-kotlin">
 <!--
-   repository.getAttendeeById(jsonRequest.obj(Keys.attendee).string(Keys.id))
-            .zipWhen { attendee ->
-                tracer.currentSpan().annotate("find profile")
-                profileRepository.getProfileById(attendee.profileId)
-            }
-            .flatMap { (attendee, profile) -> {
-            ...
+repository.getAttendeeById(id)
+    .zipWhen { attendee ->
+        profileRepository.getProfileById(attendee.profileId)
+    }
+    .flatMap { (attendee, profile) -> {
+    ...
 -->
               </code>
             </pre>
@@ -399,7 +402,8 @@ val context = ReactiveWebServerApplicationContext().apply {
               <code class="language-kotlin">
 <!--
 when {
- transition(oldState, newState) from INIT or RESEND_CREATE_ATTENDEE to CREATE_ATTENDEE ->
+ trans(old, newState) from INIT or TIMEOUT to CREATE_ATTENDEE ->
+   ...
 -->
               </code>
             </pre>
@@ -430,20 +434,22 @@ when {
                <code class="language-json">
 object AttendeeStoreTest : Spek({
   Feature("Synchronize a attendee") {
-    Scenario("An p runs in a timeout") {
+    Scenario("An update runs in a timeout") {
       When("a timeout occurs") {
         ...
       }
-      Then("the state should set on 'RESEND_CREATE_ATTENDEE'") {
-        state.string(PROCESS) shouldEqual RESEND_CREATE_ATTENDEE
+      Then("the state should set to 'RESEND'") {
+        state.string(PROCESS) shouldEqual RESEND
       }
     }
    ...
                </code>
             </pre>
         </section>
+        <section>
+            <h1>conclusion</h1>
+        </section>
         <section data-background="images/optisch.jpg">
-
         </section>
         <section id="end">
             <h1 class="ml9">
