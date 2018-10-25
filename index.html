@@ -317,8 +317,8 @@
     .zipWhen { result ->
       // Load from db
       "42 is ${result.value}".toMono()
-    }.flatMap { (result, loaded) ->
-      """{ "v": ${result.value}, "l": $loaded""".toMono()
+    }.flatMap { tuple ->
+      """{ "v": ${tuple......toMono()
     }
     .subscribe { println("Result: $it") }
 -->
@@ -332,8 +332,7 @@
 <!--
 val context = ReactiveWebServerApplicationContext().apply {
     beans {
-        bean<LogbackLoggingSystem>()
-        bean<ReactiveWebServerFactory>(name = "ReactiveWebServerFactory") {
+        bean<ReactiveWebServerFactory>(name = "serverFactory") {
             NettyReactiveWebServerFactory(8080)
         }
         bean {
@@ -351,14 +350,14 @@ val context = ReactiveWebServerApplicationContext().apply {
               <code class="language-kotlin">
 <!--
 bean(name = "serviceRoutings") {
-    val unsecuredRoutes = router {
-        GET("/", ::livenessProbeResponse)
-    }
-    val securedRoutes = router {
-        val tracer = ref<Tracer>()
-        ("/api" and accept(MediaType.TEXT_PLAIN)).nest {
-            GET("/test") {
-                ServerResponse.ok().body("Hello".toFlux())
+  val unsecuredRoutes = router {
+      GET("/", ::livenessProbeResponse)
+  }
+  val securedRoutes = router {
+    val tracer = ref<HelloService>()
+      ("/api" and accept(MediaType.TEXT_PLAIN)).nest {
+        GET("/test") {
+          ServerResponse.ok().body(helloService.hello().toFlux())
 -->
               </code>
             </pre>
@@ -433,7 +432,7 @@ when {
             <pre data-badge="json" data-badge-fg="lightgrey">
                <code class="language-json">
 object AttendeeStoreTest : Spek({
-  Feature("Synchronize a attendee") {
+  Feature("CRUD operations on an attendee") {
     Scenario("An update runs in a timeout") {
       When("a timeout occurs") {
         ...

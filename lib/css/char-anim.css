@@ -255,6 +255,7 @@ h1.ml8 {
     position:absolute;
 }
 
+code {overflow: hidden !important;}
 
 .black {
     color: black;
